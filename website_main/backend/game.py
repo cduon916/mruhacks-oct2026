@@ -44,18 +44,20 @@ def solo_gamesetup(isbn):
     return computer, player
 
 #creates Character classes for two playable characters
-def multi_gamesetup(isbn):
-    return get_char(isbn[0]), get_char(isbn[1])
+#def multi_gamesetup(isbn):
+ #   return get_char(isbn[0]), get_char(isbn[1])
 
 
 
 def main():
-    if len(isbn) == 1:
-        p1, p2 = solo_gamesetup(isbn[0])
-    elif len(isbn) == 2:
-        p1, p2 = multi_gamesetup(isbn)
+    #if len(isbn) == 1:
+    #    p1, p2 = solo_gamesetup(isbn[0])
+    #elif len(isbn) == 2:
+    #    p1, p2 = multi_gamesetup(isbn)
     #else:
         #print("Too many players!")
+
+    p1, p2 = solo_gamesetup(isbn[0])
     
     turn = random.randint(0,1)
 
