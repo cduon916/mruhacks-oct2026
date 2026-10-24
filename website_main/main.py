@@ -2,6 +2,9 @@ import json
 import random
 from pyzbar.pyzbar import decode, ZBarSymbol
 from PIL import Image
+from flask import Flask, render_template
+
+
 
 def get_isbn(image):
     img = Image.open(image)
