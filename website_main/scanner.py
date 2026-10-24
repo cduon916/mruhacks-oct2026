@@ -1,8 +1,14 @@
+import os
+
 from pyzbar.pyzbar import decode, ZBarSymbol
 
 from PIL import Image
 from flask import Flask, render_template
 scan_app = Flask(__name__) #Defined the app
+
+dll_path = r"C:\Users\tahah\AppData\Local\Programs\Python\Python313\Lib\site-packages\pyzbar\libzbar-64.dll"
+os.add_dll_directory(dll_path)
+
 
 #web page route
 @scan_app.route('/')
