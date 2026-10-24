@@ -21,7 +21,10 @@
             <form method="POST" action="{{ url_for('scanner') }}" enctype="multipart/form-data">
                 <label for="image">Image:</label>
 		        <input type="file" id="image" name="image" accept="image/*">
-                <button type="submit">Upload</button>
+                <!-- <button type="submit">Upload</button> -->
+				<fieldset>
+					<input type="submit" value="submit">
+				</fieldset>
             </form>
 		</main>
 		<hr>
