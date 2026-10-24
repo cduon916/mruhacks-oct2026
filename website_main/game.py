@@ -15,7 +15,7 @@ class Character:
 # attack function that randomly generates whether attack lands or not and effectiveness of attack, prints results
 def attack(attacker:Character, target: Character):
     if (random.randint(0,1)) == 1:
-        attackeffect = random.random(0.0, 1.3)
+        attackeffect = random.random(0.0, 1.5)
         damage = attacker.attackdamage * attackeffect
         target.health -= damage
         x = attacker
@@ -67,6 +67,3 @@ def main():
         else:
             attack(p2, p1)
             turn-=1
-
-
-
