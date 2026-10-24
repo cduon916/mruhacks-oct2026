@@ -1,3 +1,4 @@
+import json
 
 # key:value pairs of isbn:[characters]
 isbn_database = {
