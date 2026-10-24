@@ -1,9 +1,9 @@
 import json
 import random
-from bookdatabase import isbn_database, character_database
+from bookdatabase import isbn_database, char_database
 
 
-
+# builds Character class
 class Character:
     def __init__(self, name: str, health: int, attackname: str, attackdamage: int):
         self.name = name
@@ -12,6 +12,7 @@ class Character:
         self.attackdamage = attackdamage
 
 
+# attack function that randomly generates whether attack lands or not and effectiveness of attack, prints results
 def attack(attacker:Character, target: Character):
     if (random.randint(0,1)) == 1:
         attackeffect = random.random(0.0, 1.1)
@@ -22,9 +23,49 @@ def attack(attacker:Character, target: Character):
         print(f'{attacker.name.title()} missed!')
 
 
-def main():
+# builds Character class from given isbn code
+def get_char(isbn):
     # retrieves character from book (assumes there is one character per book right now)
-    char1 = isbn_database[isbnarray]
-    char1traits = char_database[char1]
+    char = isbn_database[isbn]
+    chartraits = char_database[char]
     
-    player1 = Character(char1, character_database[char1][0])
+    return Character(char, char_database[char][0], char_database[char][1], char_database[char][2])
+
+
+
+def solo_gamesetup(isbn):
+    computer_char = random.choice(list(char_database.keys()))
+    computer = Character(computer_char, char_database[computer_char][0], char_database[computer_char][1], char_database[computer_char][2])
+
+    player = get_char(isbn)
+
+    return computer, player
+
+def multi_gamesetup(isbn):
+    return get_char(isbn[0]), get_char(isbn[1])
+
+
+
+def main():
+    if len(isbn) == 1:
+        p1, p2 = solo_gamesetup(isbn[0])
+    elif len(isbn) == 2:
+        p1, p2 = multi_gamesetup(isbn)
+    else:
+        #print("Too many players!")
+    
+    turn = random.randint(0,1)
+
+    while p1.health > 0 and p2.health > 0:
+        if turn == 0:
+            attack(p1, p2)
+            turn+=1
+        else:
+            attack(p2, p1)
+            turn =1
+
+
+
+
+
+

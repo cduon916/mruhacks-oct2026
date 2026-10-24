@@ -6,6 +6,6 @@ isbn_database = {
 }
 
 # key:value pairs of character:[health:int, attackname:str, attackdamage]
-character_database = {
+char_database = {
     "Sonic" = [100, "spin jump", 20]
 }
