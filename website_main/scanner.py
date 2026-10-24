@@ -13,20 +13,20 @@ os.add_dll_directory(dll_path)
 #web page route
 @scan_app.route('/')
 def home():
-    msg = "Test test test"
+    msg = "Test test test home page"
     return render_template('pages/scanner-page.html', local_message=msg)
 
 @scan_app.route('/', methods=['POST'])
 def scan_image():
     if ('placeholder') not in request.files:
-        return "No image file found in the request", 400
+        return 0
 
     userfile = request.files['placeholder']
     
     image = Image.open(userfile.stream)
     isbns = get_isbn(image)
 
-    print(isbns[0])
+    app.logger.info(f"{isbns[0]}")
 
 
 
