@@ -18,15 +18,13 @@ def home():
 
 @scan_app.route('/', methods=['POST'])
 def scan_image():
-    if ('placeholder') not in request.files:
-        return 0
-
     userfile = request.files['placeholder']
     
     image = Image.open(userfile.stream)
     isbns = get_isbn(image)
 
-    app.logger.info(f"{isbns[0]}")
+    for isbn in isbns:
+        app.logger.info(f"{isbn}")
 
 
 
