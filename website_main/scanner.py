@@ -16,6 +16,7 @@ def home():
     msg = "Test test test"
     return render_template('pages/scanner-page.html', local_message=msg)
 
+@scan_app.route('/scanner-page', methods=['POST'])
 def upload_image():
     if ('image') not in request.files:
         return "No image file found in the request", 400
