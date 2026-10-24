@@ -1,5 +1,8 @@
 import json
 import random
+from bookdatabase import database
+
+
 
 
 class Character:
@@ -18,3 +21,7 @@ def attack(attacker:Character, target: Character):
         print(f'{attacker.name.title()} used {attacker.attackname}! It caused {damage} damage.') # update display of target's hp
     else:
         print(f'{attacker.name.title()} missed!')
+
+
+def main():
+    player1 = Character()
