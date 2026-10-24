@@ -18,7 +18,9 @@ def attack(attacker:Character, target: Character):
         attackeffect = random.random(0.0, 1.3)
         damage = attacker.attackdamage * attackeffect
         target.health -= damage
+        x = attacker
         print(f'{attacker.name.title()} used {attacker.attackname}! It caused {damage} damage.') # update display of target's hp
+        return x
     else:
         print(f'{attacker.name.title()} missed!')
 
@@ -32,7 +34,7 @@ def get_char(isbn):
     return Character(char, char_database[char][0], char_database[char][1], char_database[char][2])
 
 
-
+# creates Character classes, one for computer, one for playable character
 def solo_gamesetup(isbn):
     computer_char = random.choice(list(char_database.keys()))
     computer = Character(computer_char, char_database[computer_char][0], char_database[computer_char][1], char_database[computer_char][2])
@@ -41,6 +43,7 @@ def solo_gamesetup(isbn):
 
     return computer, player
 
+#creates Character classes for two playable characters
 def multi_gamesetup(isbn):
     return get_char(isbn[0]), get_char(isbn[1])
 
@@ -51,11 +54,12 @@ def main():
         p1, p2 = solo_gamesetup(isbn[0])
     elif len(isbn) == 2:
         p1, p2 = multi_gamesetup(isbn)
-    else:
+    #else:
         #print("Too many players!")
     
     turn = random.randint(0,1)
 
+    #swaps turns between players while both players have health
     while p1.health > 0 and p2.health > 0:
         if turn == 0:
             attack(p1, p2)
@@ -63,9 +67,6 @@ def main():
         else:
             attack(p2, p1)
             turn-=1
-
-
-
 
 
 
