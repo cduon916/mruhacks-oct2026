@@ -10,7 +10,8 @@ isbn_database = {
     0446310786: ["Mockingbird"],             # To Kill a Mockingbird
     0140177396: ["George and Lennie"],       # Of Mice and Men
     9780439023511: ["Katniss Everdeen"],     # Hunger Games: Mockingjay
-    9780141439730: ["Hyde"]                 # The Strange Case of Dr Jekyll and Mr Hyde and Other Tales of Terror
+    9780141439730: ["Hyde"],                 # The Strange Case of Dr Jekyll and Mr Hyde and Other Tales of Terror
+    9780241447383: ["Michelle Obama"]       # The Extraordinary Life of Michelle Obama
 }
 
 # key:value pairs of character:[health:int, attackname:str, attackdamage]
@@ -27,7 +28,9 @@ char_database = {
 
     "Katniss Everdeen": [140, "bow and arrow", 60],
 
-    "Hyde": [200, "slash", 50]
+    "Hyde": [200, "slash", 50],
+
+    "Michelle Obama": [5, "force feeds school lunch", 500]
 
 
 }
