@@ -4,7 +4,7 @@ from pyzbar.pyzbar import decode, ZBarSymbol
 
 from PIL import Image
 from flask import *
-scan_app = Flask(__name__) #Defined the app
+scan_app = Flask(__name__) #Defined the apppy 
 
 dll_path = r"C:\Users\tahah\AppData\Local\Programs\Python\Python313\Lib\site-packages\pyzbar\libzbar-64.dll"
 os.add_dll_directory(dll_path)
@@ -16,12 +16,12 @@ def home():
     msg = "Test test test"
     return render_template('pages/scanner-page.html', local_message=msg)
 
-@scan_app.route('/scanner-page', methods=['POST'])
-def upload_image():
-    if ('image') not in request.files:
+@scan_app.route('/', methods=['POST'])
+def scan_image():
+    if ('placeholder') not in request.files:
         return "No image file found in the request", 400
 
-    userfile = request.files['image']
+    userfile = request.files['placeholder']
     
     image = Image.open(userfile.stream)
     isbns = get_isbn(image)
