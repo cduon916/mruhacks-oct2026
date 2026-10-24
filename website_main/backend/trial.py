@@ -1,5 +1,5 @@
 from flask import *
-from b_scanner import scan_image #NEWWW
+from scanner import scan_image #NEWWW
 
 app = Flask(__name__, template_folder="../templates")
 @app.route('/')
@@ -7,7 +7,7 @@ def index():
     return render_template('index.html')
 
 @app.route('/scanner', methods=['GET', 'POST'])
-def b_scanner():
+def scanner():
     if request.method == 'POST':
         image = request.files['image']
         scan_image(image)

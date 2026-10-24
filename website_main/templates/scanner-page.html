@@ -18,7 +18,7 @@
 		<main>
 			<h1>Book Kinz</h1>
 			<h2>Scan Book</h2>
-            <form method="POST" action="{{ url_for('b_scanner') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ url_for('scanner') }}" enctype="multipart/form-data">
                 <label for="image">Image:</label>
 		        <input type="file" id="image" name="image" accept="image/*">
                 <button type="submit">Upload</button>
