@@ -10,9 +10,7 @@ def scan_image(userfile):
     image = Image.open(userfile.stream)
     isbns = get_isbn(image)
 
-    for isbn in isbns:
-        print(isbn + "\n")
-
+    return isbns
 
 
 def get_isbn(image):

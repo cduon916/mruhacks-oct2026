@@ -1,5 +1,8 @@
 from flask import *
 from scanner import scan_image #NEWWW
+from game import *
+
+isbn = 0
 
 app = Flask(__name__, template_folder="../templates")
 @app.route('/')
@@ -15,11 +18,13 @@ def scanner():
         isbn_array = scan_image(image)
         if (len(isbn_array) > 0):
             given_isbn = isbn_array[0]
-
+        isbn = int(given_isbn)
     return render_template('scanner-page.html', isbn = given_isbn)
 
-@app.route('/game', methods=['GET', 'POST'])
+@app.route('/game', methods=['GET', 'POST','SHOW'])
 def game():
+    if request.method == 'SHOW':
+        character = get_char(isbn)
     return render_template('game.html')
 
 
