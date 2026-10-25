@@ -3,34 +3,33 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=2.0">
-		<meta name="author" content="Taha, Evan, Celina">
+		<meta name="author" content="Taha, Evan, Celine">
 		<title>Game Page</title>
-		<link rel="stylesheet" href="static/style.css">
+		<link rel="stylesheet" href="../static/style.css">
 		
 		<!--FLack compatable filepath ex: <img src="{{ url_for('static', filename='images/logo.png') }}"> -->
 	</head>
 	<body>
 		<header>
 			<nav>
-				<p>{{ isbn }}</p>
+				<p>{{ isbn_num }}</p>
 			</nav>
-			
-        	<!--<script>
-        	    const params = new URLSearchParams(window.location.search);
-        	    const book_id = parseInt(params.get("isbn"), 10);
-        	    console.log(book_id);
-        	    document.getElementById("isbn").textContent = book_id;
-        	</script> -->
 		</header>
 		<main>
 			<h1>Book Kinz</h1>
-			<h2>Battle Station</h2>
+			<h2>Fight!</h2>
+			<div class="battlefield">
+				<div class="wardisplay">
+					<img src="../backend/character_pictures/Harry Potter.png">
+					<img src="../backend/character_pictures/Harry Potter.png">
+				</div>
+				<ul id="battleLog">
+					<li class="item">
+						<span class="item-text">Sample Item 1</span>
+					</li>          
+				</ul>
+			</div>
             
-            <!--form method="GET" action="{{ url_for('game') }}" enctype="multipart/form-data">
-                <label for="image">Character </label>
-		        <input type="file" id="image" name="image" accept="image/*">
-                <button type="submit">Upload</button>
-            </form-->
 		</main>
 		<hr>
 		<footer>
