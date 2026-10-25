@@ -5,7 +5,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=2.0">
 		<meta name="author" content="Taha, Evan, Celine">
 		<title>Game Page</title>
-		<link rel="stylesheet" href="../static/style.css">
+		<link rel="stylesheet" href="../static/gamestyle.css">
+		<script src="../backend/attack_test.js" ></script>
 		
 		<!--FLack compatable filepath ex: <img src="{{ url_for('static', filename='images/logo.png') }}"> -->
 	</head>
@@ -21,9 +22,17 @@
 			<h1>Book Kinz</h1>
 			<h2>Fight!</h2>
 			<div class="battlefield">
-				<div class="wardisplay">
-					<img src="../backend/character_pictures/Harry Potter.png">
-					<img src="../backend/character_pictures/Harry Potter.png">
+				<div class="displaybox">
+					<div class="wardisplay">
+						<div class="fighter" id="playerChar">
+							<img class="fighterimg" src="../backend/character_pictures/Harry Potter.png">
+						</div>
+						<div class="fighter" id="enemyChar">
+							<img class="fighterimg" src="../backend/character_pictures/Harry Potter.png">
+						</div>
+						
+					</div>
+					<button id="fightBtn">Fight!</button>
 				</div>
 				<ul id="battleLog">
 					<li class="item">
