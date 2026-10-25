@@ -29,7 +29,7 @@ def scanner():
     if (request.method == 'GET'):
         return render_template('scanner-page.html', isbn = given_isbn)
     
-    #return render_template('scanner-page.html', isbn = "Invalid ISBN! Try again.")
+    return render_template('scanner-page.html', isbn = "Invalid ISBN! Try again.")
 
 @app.route('/game', methods=['GET', 'POST'])
 def game():

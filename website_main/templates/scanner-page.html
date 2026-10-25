@@ -5,23 +5,33 @@
 		<meta name="viewport" content="width=device-width, initial-scale=2.0">
 		<meta name="author" content="Taha, Evan, Celina">
 		<title>Scanner Page</title>
-		<link rel="stylesheet" href="static/style.css">
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 		
 		<!--FLack compatable filepath ex: <img src="{{ url_for('static', filename='images/logo.png') }}"> -->
 	</head>
 	<body>
 		<header>
+			<figure>
+				<img class="site-logo" src="{{ url_for('static', filename='character_pictures/site_icon.png') }}">
+			</figure>
 			<nav>
-				<p>{{ isbn }}</p>
+				<p>Bringing literature to life!</p>
 			</nav>
 		</header>
 		<main>
-			<h1>Book Kinz</h1>
-			<h2>Scan Book</h2>
+			<h2>Summon your fighter</h2>
             <form method="POST" action="{{ url_for('scanner') }}" enctype="multipart/form-data">
-                <label for="image">Image:</label>
-		        <input type="file" id="image" name="image" accept="image/*">
-                <button type="submit">Upload</button>
+				<fieldset>
+					<legend>Scan a book's ISBN</legend>
+					<p>
+						<label for="image">Image</label>
+		        		<input type="file" id="image" name="image" accept="image/*">
+					</p>
+					<p>
+						<button type="submit">Upload</button>
+					</p>
+					
+				</fieldset>
             </form>
 
 			{% if isbn and isbn != "Invalid ISBN! Try again." %}
@@ -29,9 +39,9 @@
 			{% endif %}
 
 		</main>
-		<hr>
+		
 		<footer>
-			<small>copy; Hisseine Taha, 2026. <a href="#top"> Back Up </a> </small>
+			<small>&copy; Hisseine Taha, Celina Duon, Evan Pefanis, Adam Pefanis 2026. <a href="#top"> Back Up </a> </small>
 		</footer>
 		<hr>
 	</body>
