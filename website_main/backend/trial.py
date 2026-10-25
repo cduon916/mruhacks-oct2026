@@ -4,7 +4,11 @@ from game import get_char
 
 isbn = 0
 
-app = Flask(__name__, template_folder="../templates")
+app = Flask(
+    __name__, 
+    template_folder="../templates",
+    static_folder="../static"
+    )
 @app.route('/')
 def index():
     return render_template('index.html')
