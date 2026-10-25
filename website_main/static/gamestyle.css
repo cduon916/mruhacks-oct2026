@@ -1,11 +1,15 @@
 body {
-  background-color: #000000;
+  background-color: #FFFFFF;
   font-family: "Courier New", monospace;
-  color: #FFCB6B;  /*Light Orange*/
+  color: #1c518e;  /*Light Orange*/
 }
 
+h1, h2, nav{
+    text-align: center;
+}
 img.site-logo {
-  width:15%;
+
+  width:30%;
   height: auto;
   aspect-ratio: 1170/1133;
   object-fit: cover;
