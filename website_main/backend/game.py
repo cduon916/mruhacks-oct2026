@@ -1,6 +1,5 @@
 import json
 import random
-import pygame
 from bookdatabase import isbn_database, char_database
 
 # builds Character class
@@ -51,20 +50,6 @@ def solo_gamesetup(isbn):
 
 def main(isbn):
     p1, p2 = solo_gamesetup(isbn)
-
-    pygame.init()
-    screen = pygame.display.set_mode(640, 400)
-
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-
-        screen.fill((0,0,0))
-        pygame.display.flip()
-
-    pygame.quit()
-
     turn = random.randint(0,1)
 
     #swaps turns between players while both players have health

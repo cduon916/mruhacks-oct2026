@@ -11,10 +11,6 @@
 	</head>
 	<body>
 		<header>
-			<nav>
-				<p>{{ isbn }}</p>
-			</nav>
-			
         	<!--<script>
         	    const params = new URLSearchParams(window.location.search);
         	    const book_id = parseInt(params.get("isbn"), 10);
@@ -23,9 +19,15 @@
         	</script> -->
 		</header>
 		<main>
+			
+			<p>{{ isbn }}</p>
 			<h1>Book Kinz</h1>
 			<h2>Battle Station</h2>
             
+			<div class="game-container">
+				
+			</div>
+
             <!--form method="GET" action="{{ url_for('game') }}" enctype="multipart/form-data">
                 <label for="image">Character </label>
 		        <input type="file" id="image" name="image" accept="image/*">
