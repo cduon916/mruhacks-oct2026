@@ -43,32 +43,13 @@
 					<button id="fightBtn">Fight!</button>
 				</div>
 				<ul id="battleLog">
-					        
+					<template id="tempItem">
+                		<li class="item">
+                        	<span class="item-text"></span>
+                		</li>
+            		</template>
 				</ul>
 			</div>
-            
-
-			<!--
-			<h2>Now Fight!</h2>
-			<div class="battlefield">
-				<figure id="row">
-                        <img class="fighter-icon" src="{{ url_for('static', filename='character_pictures/' ~ char_name ~ '.png') }}">
-                        <figcaption class="char-captions">{{char_name}}</figcaption>
-                </figure>
-					
-				<figure id="col">
-						<img class="fighter-icon" src="{{ url_for('static', filename='character_pictures/' ~ enemy_name ~ '.png') }}">
-						<figcaption class="char-captions">{{ enemy_name }}</figcaption>
-				</figure>
-				
-				<ul id="battleLog">
-					<li class="item">
-						<span class="item-text">Sample Item 1</span>
-					</li>          
-				</ul>
-			</div>
-			-->
-            
 		</main>
 		<hr>
 		<footer>
