@@ -4,8 +4,8 @@ import json
 isbn_database = {
     123456: ["Sonic"],                  #test
     9780140126709: ["Old Major"],         # animal farm
-    0078073006991: ["Harry Potter"],            #Harry Potter and the Prisoner of Azkaban
-    0010999007997: ["Bilbo Baggins"],           # The Hobbit
+    78073006991: ["Harry Potter"],            #Harry Potter and the Prisoner of Azkaban
+    10999007997: ["Bilbo Baggins"],           # The Hobbit
     9780140177398: ["George and Lennie"],       # Of Mice and Men
     9780439023511: ["Katniss Everdeen"],     # Hunger Games: Mockingjay
     9780143106357: ["Big Joao"],             # Jorge Amada

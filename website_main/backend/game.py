@@ -1,6 +1,6 @@
 import json
 import random
-from website_main.backend.bookdatabase import isbn_database, char_database
+from bookdatabase import isbn_database, char_database
 
 # builds Character class
 class Character:
@@ -48,7 +48,7 @@ def solo_gamesetup(isbn):
 
 
 
-def main():
+def main(isbn):
     #if len(isbn) == 1:
     #    p1, p2 = solo_gamesetup(isbn[0])
     #elif len(isbn) == 2:

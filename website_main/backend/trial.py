@@ -12,7 +12,7 @@ def index():
 @app.route('/scanner', methods=['GET', 'POST'])
 def scanner():
 
-    given_isbn = "No ISBN found"
+    given_isbn = ""
     if request.method == 'POST':
         image = request.files['image']
         isbn_array = scan_image(image)
@@ -21,7 +21,7 @@ def scanner():
     if (given_isbn != "No ISBN found"):
         return render_template('scanner-page.html', isbn = given_isbn)
     else:
-        return render_template('game.html', isbn_num = given_isbn)
+        return render_template('game.html?r_isbn=isbn_num', isbn_num = given_isbn)
 
 @app.route('/game', methods=['GET', 'POST', 'SHOW'])
 def game():
