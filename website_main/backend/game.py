@@ -10,11 +10,21 @@ class Character:
         self.attackname = attackname
         self.attackdamage = attackdamage
 
+    
+    def char_to_dict(self):
+        return {
+            "Name": self.name,
+            "Health": self.health,
+            "Attack": self.attackname,
+            "AttackDamage": self.attackdamage
+        }
+
+
 
 # attack function that randomly generates whether attack lands or not and effectiveness of attack, prints results
 def attack(attacker:Character, target: Character):
     if (random.randint(0,1)) == 1:
-        attackeffect = random.random(0.0, 1.5)
+        attackeffect = random.uniform(0.0, 1.5)
         damage = attacker.attackdamage * attackeffect
         target.health -= damage
         x = attacker
@@ -23,15 +33,23 @@ def attack(attacker:Character, target: Character):
     else:
         print(f'{attacker.name.title()} missed!')
 
-
 # builds Character class from given isbn code
 def get_char(isbn):
-    # retrieves character from book (assumes there is one character per book right now)
-    char = isbn_database[isbn]
+    # retrieves character from book (assumes there is one character per book right now). If a character doesn't exist, return "Invalid"
+    char = isbn_database.get(isbn, "Invalid")
+
+    if (char == "Invalid"):
+        return "Invalid"
+    
     chartraits = char_database[char]
     
     return Character(char, chartraits[0], chartraits[1], chartraits[2])
 
+# returns a random character
+def random_char():
+    char = random.choice(list(char_database.keys()))
+    chartraits = char_database[char]
+    return Character(char, chartraits[0], chartraits[1], chartraits[2])
 
 # creates Character classes, one for computer, one for playable character
 def solo_gamesetup(isbn):

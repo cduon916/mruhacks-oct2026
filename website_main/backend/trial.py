@@ -1,6 +1,8 @@
 from flask import *
 from scanner import scan_image #NEWWW
-from game import get_char
+from game import get_char, random_char, Character
+from bookdatabase import isbn_database
+import random
 
 isbn = 0
 
@@ -20,7 +22,7 @@ def scanner():
     if request.method == 'POST':
         image = request.files['image']
         isbn_array = scan_image(image)
-        if (len(isbn_array) > 0):
+        if (isbn_array and len(isbn_array) > 0):
             given_isbn = isbn_array[0]
 
     if (str(given_isbn).isdigit()):
@@ -34,17 +36,19 @@ def scanner():
 @app.route('/game', methods=['GET', 'POST'])
 def game():
     isbn = request.args.get('isbn', '')
+    enemy = random_char()
 
     if (isbn.isdigit()):
         character = get_char(int(isbn))
     else:
         character = "Invalid"
 
+    if (character == "Invalid"):
+        app.logger.error("Invalid ISBN")
+        return redirect(url_for("scanner", isbn=isbn))
+
     if request.method == 'GET':
-        
-        return render_template('game.html', isbn=isbn, char_name=character.name)
-    
-    
+        return render_template('game.html', isbn=isbn, player=character.char_to_dict(), enemy=enemy.char_to_dict())
 
 
 if __name__ == "__main__":

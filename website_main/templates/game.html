@@ -3,10 +3,15 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="author" content="Taha, Evan, Celine">
+		<meta name="author" content="Taha, Evan, Celina">
 		<title>Game Page</title>
-		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='gamestyle.css') }}">
 		
+		<script>
+			const PLAYER_DATA = {{ player | tojson }};
+			const ENEMY_DATA = {{ enemy | tojson }};
+		</script>
+		<script src="{{ url_for('static', filename='attack_test.js') }}"></script>
 		<!--FLack compatable filepath ex: <img src="{{ url_for('static', filename='images/logo.png') }}"> -->
 	</head>
 	<body>
@@ -19,21 +24,50 @@
 			</nav>
 		</header>
 		<main>
-			
-			<p>{{ isbn }}</p>
-			<p>{{ char_name }}</p>
 			<h2>Now Fight!</h2>
 			<div class="battlefield">
-				<div class="wardisplay">
-					<img class="fighter-icon" src="{{ url_for('static', filename='character_pictures/' ~ char_name ~ '.png') }}">
-					<img class="fighter-icon" src="{{ url_for('static', filename='character_pictures/' ~ char_name ~ '.png') }}">
+				<div class="displaybox">
+					<div class="wardisplay">
+						<div class="fighter" id="playerChar">
+							<img class="fighterimg" src="">
+							<div id="leftHealthbar">
+							</div>
+						</div>
+						<div class="fighter" id="enemyChar">
+							<img class="fighterimg">
+							<div id="rightHealthbar">
+							</div>
+						</div>
+						
+					</div>
+					<button id="fightBtn">Fight!</button>
 				</div>
+				<ul id="battleLog">
+					        
+				</ul>
+			</div>
+            
+
+			<!--
+			<h2>Now Fight!</h2>
+			<div class="battlefield">
+				<figure id="row">
+                        <img class="fighter-icon" src="{{ url_for('static', filename='character_pictures/' ~ char_name ~ '.png') }}">
+                        <figcaption class="char-captions">{{char_name}}</figcaption>
+                </figure>
+					
+				<figure id="col">
+						<img class="fighter-icon" src="{{ url_for('static', filename='character_pictures/' ~ enemy_name ~ '.png') }}">
+						<figcaption class="char-captions">{{ enemy_name }}</figcaption>
+				</figure>
+				
 				<ul id="battleLog">
 					<li class="item">
 						<span class="item-text">Sample Item 1</span>
 					</li>          
 				</ul>
 			</div>
+			-->
             
 		</main>
 		<hr>

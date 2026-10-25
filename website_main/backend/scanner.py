@@ -1,10 +1,14 @@
 from pyzbar.pyzbar import decode, ZBarSymbol
 from PIL import Image
-
+import site
 import os
-dll_path = r"C:\Users\tahah\AppData\Local\Programs\Python\Python313\Lib\site-packages\pyzbar\libzbar-64.dll"
-os.add_dll_directory(dll_path)
 
+for site_pkg in site.getsitepackages() + [site.getusersitepackages()]:
+    if site_pkg and os.path.exists(site_pkg):
+        dll_path = os.path.join(site_pkg, "pyzbar")
+        if os.path.exists(dll_path):
+            os.add_dll_directory(dll_path)
+            break
 
 def scan_image(userfile):
     image = Image.open(userfile.stream)

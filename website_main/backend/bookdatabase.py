@@ -1,6 +1,6 @@
 import json
 
-# key:value pairs of isbn:[characters]
+# key:value pairs of isbn:character
 isbn_database = {
     9789849608806: "Sonic",                # test
     9780140126709: "Old_Major",            # Animal Farm
@@ -14,9 +14,11 @@ isbn_database = {
     9780141439730: "Hyde"                  # Dr. Jekyll and Mr. Hyde
 }
 
-# key:value pairs of character:[health:int, attackname:str, attackdamage]
+# key:value pairs of character:[health:int, attackname:str, attackdamage: int]
 char_database = {
     "Sonic": [100, "spin jump", 20],
+
+    "Old_Major": [160, "bite", 40],
 
     "Harry_Potter": [120, "magic", 35],
 
@@ -26,14 +28,12 @@ char_database = {
 
     "Katniss_Everdeen": [140, "bow and arrow", 60],
 
-    "Hyde": [200, "slash", 50],
-
     "Michelle_Obama": [5, "force feeds school lunch", 500],
 
     "Big_Joao": [150, "punch", 30],
 
     "Ice_Cube": [140, "dropkick", 30],
 
-    "Hyde": [200, "punch", 50]
+    "Hyde": [200, "slash", 50]
 
 }
