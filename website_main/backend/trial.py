@@ -36,6 +36,7 @@ def game():
         app.logger.info(character.name)
 
     if request.method == 'GET':
+        
         return render_template('game.html', isbn=isbn)
     
     
