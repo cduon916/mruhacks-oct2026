@@ -5,8 +5,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=2.0">
 		<meta name="author" content="Taha, Evan, Celine">
 		<title>Game Page</title>
-		<link rel="stylesheet" href="../static/gamestyle.css">
-		<script src="../backend/attack_test.js" ></script>
+		<link rel="stylesheet" href="{{ url_for('static', filename='gamestyle.css') }}">
+		<script>
+			const JSON_URL = "{{ url_for('static', filename='characters.json') }}";
+		</script>
+		<script src="{{ url_for('static', filename='attack_test.js') }}" ></script>
 		
 		<!--FLack compatable filepath ex: <img src="{{ url_for('static', filename='images/logo.png') }}"> -->
 	</head>
@@ -25,10 +28,14 @@
 				<div class="displaybox">
 					<div class="wardisplay">
 						<div class="fighter" id="playerChar">
-							<img class="fighterimg" src="../backend/character_pictures/Harry Potter.png">
+							<img class="fighterimg" src="{{ url_for('static', filename='character_pictures/Harry Potter.png') }}">
+							<div id="leftHealthbar">
+							</div>
 						</div>
 						<div class="fighter" id="enemyChar">
-							<img class="fighterimg" src="../backend/character_pictures/Harry Potter.png">
+							<img class="fighterimg" src="{{ url_for('static', filename='character_pictures/Harry Potter.png') }}">
+							<div id="rightHealthbar">
+							</div>
 						</div>
 						
 					</div>

@@ -1,0 +1,58 @@
+{
+    "characters": [
+        {
+            "Name": "Sonic",
+            "Health": 100,
+            "Attack": "Spin Jump",
+            "AttackDamage": 20
+        },
+        {
+            "Name": "Harry Potter",
+            "Health": 120,
+            "Attack": "Expelliarmus",
+            "AttackDamage": 35
+        },
+        {
+            "Name": "Bilbo Baggins",
+            "Health": 160,
+            "Attack": "Sting",
+            "AttackDamage": 40
+        },
+        {
+            "Name": "George and Lennie",
+            "Health": 230,
+            "Attack": "Dropkick",
+            "AttackDamage": 40
+        },
+        {
+            "Name": "Katniss Everdeen",
+            "Health": 140,
+            "Attack": "Bow and Arrow",
+            "AttackDamage": 60
+        },
+        {
+            "Name": "Mr. Hyde",
+            "Health": 200,
+            "Attack": "Slash",
+            "AttackDamage": 50
+        },
+        {
+            "Name": "Michelle Obama",
+            "Health": 5,
+            "Attack": "Forcefeed School Lunch",
+            "AttackDamage": 500
+        },
+        {
+            "Name": "Big Joao",
+            "Health": 150,
+            "Attack": "Deadly Punch",
+            "AttackDamage": 30
+        },
+        {
+            "Name": "Ice Cube",
+            "Health": 140,
+            "Attack": "Spin Jump",
+            "AttackDamage": 30
+        }
+    ]
+}

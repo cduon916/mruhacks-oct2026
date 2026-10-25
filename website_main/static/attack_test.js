@@ -1,0 +1,123 @@
+let breakLoop = false;
+let aVariable = 20;
+let playerChar;
+let enemyChar;
+let playerCharCurrentHealth;
+let enemyCharCurrentHealth;
+
+document.addEventListener('DOMContentLoaded',  () => {
+    document.addEventListener("click", doohickey);
+    parseTheCharacters();
+
+    function doohickey(e) {
+        if(e.target.id == "fightBtn") {
+
+            playerCharCurrentHealth = playerChar.Health;
+            enemyCharCurrentHealth = playerChar.Health;
+            let isYourTurn = flipACoin()
+
+            //Primary Loop!
+            let loopID = setInterval(() => {
+                console.log("Skibidi "+aVariable)
+                aVariable--;
+
+                if(isYourTurn) {
+                    playerAttacks(e)
+                    isYourTurn = !isYourTurn;
+                } else {
+                    enemyAttacks(e);
+                    isYourTurn = !isYourTurn;
+                }
+                
+
+                //enemyAttackLands(e);
+                if(playerCharCurrentHealth < 1) console.log("Enemy wins!")
+                if(enemyCharCurrentHealth < 1) console.log("Player wins!")
+
+                if(aVariable<1) breakLoop = true;
+                if(playerCharCurrentHealth < 1 || enemyCharCurrentHealth < 1) breakLoop = true;
+                if(breakLoop) clearInterval(loopID);
+            }, 1000);
+
+
+        }
+    }
+
+
+
+    function playerAttacks(e) {
+        if(flipACoin()) {
+            let attackImpact = calculateAttackEffectiveness();
+            let damage = playerChar.AttackDamage * attackImpact;
+            console.log("Hit for "+damage+" damage!");
+            enemyCharCurrentHealth = enemyCharCurrentHealth - damage;
+            console.log(enemyCharCurrentHealth);
+            playerAttackLands(e, damage);
+        } else {
+            playerAttackFails(e);
+        }
+    }
+
+    function enemyAttacks(e) {
+        console.log("Ouch!");
+
+    }
+
+
+
+    function playerAttackLands(e, damage) {
+        console.log("Ouch!")
+            const playerCharObj = document.getElementById('playerChar');
+            const enemyCharObj = document.getElementById('enemyChar');
+            playerCharObj.classList.add("attackingL");
+            enemyCharObj.classList.add("ouchie")
+            const enemyHealthbar = document.getElementById("rightHealthbar");
+            console.log("Enemy max health is "+enemyChar.Health);
+            console.log("Enemy health percent: "+(100*(enemyCharCurrentHealth/enemyChar.Health)));
+            enemyHealthbar.style.width = ""+(100*(enemyCharCurrentHealth/enemyChar.Health))+"%";
+            setTimeout(() => {
+                playerCharObj.classList.remove("attackingL");
+                enemyCharObj.classList.remove("ouchie")
+            }, 100);
+    }
+
+    function playerAttackFails(e) {
+        console.log("Dodge!")
+            const playerCharObj = document.getElementById('playerChar');
+            const enemyCharObj = document.getElementById('enemyChar');
+            playerCharObj.classList.add("attackingL");
+            enemyCharObj.classList.add("dodge")
+            setTimeout(() => {
+                playerCharObj.classList.remove("attackingL");
+                enemyCharObj.classList.remove("dodge")
+            }, 100);
+    }
+
+
+    function flipACoin() {
+        let raw = Math.random()
+        return raw > 0.5 ? true:false;
+    }
+
+    function calculateAttackEffectiveness() {
+        return (Math.random() * (1.5));
+    }
+})
+
+
+async function parseTheCharacters() {
+    console.log("Hiiii")
+    const response = await fetch(JSON_URL);
+        const data = await response.json();
+        const characterList = data.characters;
+
+        let myCharacterName = "Harry Potter";
+        playerChar = characterList.find(chara => chara.Name === myCharacterName);
+
+        const randomIndex = Math.floor(Math.random() * characterList.length);
+        enemyChar = characterList[randomIndex];
+
+        console.log("You have chosen "+playerChar.Name+" with attack "+playerChar.Attack);
+        console.log("And you are fighting "+enemyChar.Name+" with attack "+enemyChar.Attack);
+
+}
