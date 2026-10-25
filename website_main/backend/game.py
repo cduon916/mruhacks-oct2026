@@ -62,7 +62,9 @@ def main(isbn):
 
         screen.fill((0,0,0))
         pygame.display.flip()
-       
+
+    pygame.quit()
+
     turn = random.randint(0,1)
 
     #swaps turns between players while both players have health
