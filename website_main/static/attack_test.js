@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded',  () => {
     function doohickey(e) {
         if(e.target.id == "fightBtn") {
 
+            logEvent("Your character, "+playerChar.Name+" is facing off against "+enemyChar.Name+"!", false);
+
             playerCharCurrentHealth = playerChar.Health;
             enemyCharCurrentHealth = playerChar.Health;
             let isYourTurn = flipACoin()
@@ -20,8 +22,6 @@ document.addEventListener('DOMContentLoaded',  () => {
 
             //Primary Loop!
             let loopID = setInterval(() => {
-                console.log("Skibidi "+aVariable)
-
                 if(isYourTurn) {
                     playerAttacks(e)
                     isYourTurn = !isYourTurn;
@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded',  () => {
         const playerCharObj = document.getElementById('playerChar');
         const enemyHealthbar = document.getElementById("leftHealthbar");
         enemyHealthbar.hidden = true;
+        logEvent(enemyChar.Name+" has won!!", false);
         playerCharObj.classList.add("dead");
     }
 
@@ -54,6 +55,7 @@ document.addEventListener('DOMContentLoaded',  () => {
         const enemyCharObj = document.getElementById('enemyChar');
         const playerHealthbar = document.getElementById("rightHealthbar");
         playerHealthbar.hidden = true;
+        logEvent("Your character, "+playerChar.Name+" has won!!", true);
         enemyCharObj.classList.add("dead");
     }
 
@@ -63,10 +65,11 @@ document.addEventListener('DOMContentLoaded',  () => {
         if(flipACoin()) {
             let attackImpact = calculateAttackEffectiveness();
             let damage = playerChar.AttackDamage * attackImpact;
-            console.log("Hit for "+damage+" damage!");
             enemyCharCurrentHealth = enemyCharCurrentHealth - damage;
+            logEvent(playerChar.Name+"'s "+playerChar.Attack+" hit "+enemyChar.Name+" for "+Math.floor(damage)+" damage!", true);
             playerAttackLands(e, damage);
         } else {
+            logEvent(playerChar.Name+" used "+playerChar.Attack+", but "+enemyChar.Name+" dodged!", true);
             playerAttackFails(e);
         }
     }
@@ -75,10 +78,11 @@ document.addEventListener('DOMContentLoaded',  () => {
         if(flipACoin()) {
             let attackImpact = calculateAttackEffectiveness();
             let damage = enemyChar.AttackDamage * attackImpact;
-            console.log("Hit for "+damage+" damage!");
             playerCharCurrentHealth = playerCharCurrentHealth - damage;
+            logEvent(enemyChar.Name+"'s "+enemyChar.Attack+" hit "+playerChar.Name+" for "+Math.floor(damage)+" damage!", false);
             enemyAttackLands(e, damage);
         } else {
+            logEvent(enemyChar.Name+" used "+enemyChar.Attack+", but "+playerChar.Name+" dodged!", false);
             enemyAttackFails(e);
         }
     }
@@ -86,19 +90,16 @@ document.addEventListener('DOMContentLoaded',  () => {
 
 
     function playerAttackLands(e, damage) {
-        console.log("Ouch!")
-            const playerCharObj = document.getElementById('playerChar');
-            const enemyCharObj = document.getElementById('enemyChar');
-            playerCharObj.classList.add("attackingL");
-            enemyCharObj.classList.add("ouchie")
-            const enemyHealthbar = document.getElementById("rightHealthbar");
-            console.log("Enemy max health is "+enemyChar.Health);
-            console.log("Enemy health percent: "+(100*(enemyCharCurrentHealth/enemyChar.Health)));
-            enemyHealthbar.style.width = ""+(100*(enemyCharCurrentHealth/enemyChar.Health))+"%";
-            setTimeout(() => {
-                playerCharObj.classList.remove("attackingL");
-                enemyCharObj.classList.remove("ouchie")
-            }, 100);
+        const playerCharObj = document.getElementById('playerChar');
+        const enemyCharObj = document.getElementById('enemyChar');
+        playerCharObj.classList.add("attackingL");
+        enemyCharObj.classList.add("ouchie")
+        const enemyHealthbar = document.getElementById("rightHealthbar");
+        enemyHealthbar.style.width = ""+(100*(enemyCharCurrentHealth/enemyChar.Health))+"%";
+        setTimeout(() => {
+            playerCharObj.classList.remove("attackingL");
+            enemyCharObj.classList.remove("ouchie")
+        }, 100);
     }
 
     function playerAttackFails(e) {
@@ -128,15 +129,14 @@ document.addEventListener('DOMContentLoaded',  () => {
     }
 
     function enemyAttackFails(e) {
-        console.log("Dodge!")
-            const playerCharObj = document.getElementById('playerChar');
-            const enemyCharObj = document.getElementById('enemyChar');
-            enemyCharObj.classList.add("attackingR");
-            playerCharObj.classList.add("dodge")
-            setTimeout(() => {
-                enemyCharObj.classList.remove("attackingR");
-                playerCharObj.classList.remove("dodge")
-            }, 100);
+        const playerCharObj = document.getElementById('playerChar');
+        const enemyCharObj = document.getElementById('enemyChar');
+        enemyCharObj.classList.add("attackingR");
+        playerCharObj.classList.add("dodge")
+        setTimeout(() => {
+            enemyCharObj.classList.remove("attackingR");
+            playerCharObj.classList.remove("dodge")
+        }, 100);
     }
 
 
@@ -176,4 +176,13 @@ async function parseTheCharacters() {
     enemyImage.src = `/static/character_pictures/${enemyChar.Name}.png`;
 
 
+}
+
+function logEvent(str, isPlayerAction) {
+    console.log(str);
+    const template = document.querySelector("#tempItem");
+    const clone = template.content.cloneNode(true);
+    clone.querySelector(".item-text").textContent = str;
+    if(isPlayerAction) clone.querySelector(".item-text").classList.add("yourActions");
+    document.querySelector("#battleLog").appendChild(clone);
 }

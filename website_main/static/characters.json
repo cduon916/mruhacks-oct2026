@@ -31,7 +31,7 @@
             "AttackDamage": 60
         },
         {
-            "Name": "Mr. Hyde",
+            "Name": "Mr Hyde",
             "Health": 200,
             "Attack": "Slash",
             "AttackDamage": 50

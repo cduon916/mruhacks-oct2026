@@ -92,3 +92,7 @@ img.site-logo {
     transform: rotate(90deg);
     filter:grayscale(100)
 }
+
+.yourActions {
+    color:#47c62b;
+}

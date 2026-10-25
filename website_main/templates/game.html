@@ -28,12 +28,12 @@
 				<div class="displaybox">
 					<div class="wardisplay">
 						<div class="fighter" id="playerChar">
-							<img class="fighterimg" src="{{ url_for('static', filename='character_pictures/Harry Potter.png') }}">
+							<img class="fighterimg" src="">
 							<div id="leftHealthbar">
 							</div>
 						</div>
 						<div class="fighter" id="enemyChar">
-							<img class="fighterimg" src="{{ url_for('static', filename='character_pictures/Harry Potter.png') }}">
+							<img class="fighterimg">
 							<div id="rightHealthbar">
 							</div>
 						</div>
@@ -42,11 +42,14 @@
 					<button id="fightBtn">Fight!</button>
 				</div>
 				<ul id="battleLog">
-					<li class="item">
-						<span class="item-text">Sample Item 1</span>
-					</li>          
+					        
 				</ul>
 			</div>
+			<template id="tempItem">
+				<li class="item">
+						<span class="item-text"></span>
+				</li>   
+			</template>
             
 		</main>
 		<hr>
