@@ -1,6 +1,6 @@
 from flask import *
 from scanner import scan_image #NEWWW
-from game import *
+from game import get_char
 
 isbn = 0
 
@@ -18,8 +18,10 @@ def scanner():
         isbn_array = scan_image(image)
         if (len(isbn_array) > 0):
             given_isbn = isbn_array[0]
-        isbn = int(given_isbn)
-    return render_template('scanner-page.html', isbn = given_isbn)
+    if (given_isbn != "No ISBN found"):
+        return render_template('scanner-page.html', isbn = given_isbn)
+    else:
+        return render_template('game.html', isbn_num = given_isbn)
 
 @app.route('/game', methods=['GET', 'POST','SHOW'])
 def game():

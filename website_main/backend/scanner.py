@@ -9,7 +9,6 @@ os.add_dll_directory(dll_path)
 def scan_image(userfile):
     image = Image.open(userfile.stream)
     isbns = get_isbn(image)
-
     return isbns
 
 
