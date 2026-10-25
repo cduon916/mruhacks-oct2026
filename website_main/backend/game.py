@@ -1,6 +1,6 @@
 import json
 import random
-from ..bookdatabase import isbn_database, char_database
+from website_main.backend.bookdatabase import isbn_database, char_database
 
 # builds Character class
 class Character:
