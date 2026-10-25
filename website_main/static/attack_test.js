@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded',  () => {
     }
 
     function playerWins() {
-        const enemyCharObj = document.getElementById('playerChar');
+        const enemyCharObj = document.getElementById('enemyChar');
         enemyCharObj.classList.add("dead");
     }
 
@@ -152,7 +152,7 @@ async function parseTheCharacters() {
 
 
 
-    
+
     const characterList = data.characters;
 
     let myCharacterName = "Harry Potter";
