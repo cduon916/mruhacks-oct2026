@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded',  () => {
             //Primary Loop!
             let loopID = setInterval(() => {
                 console.log("Skibidi "+aVariable)
-                aVariable--;
 
                 if(isYourTurn) {
                     playerAttacks(e)
@@ -31,16 +30,25 @@ document.addEventListener('DOMContentLoaded',  () => {
                 
 
                 //enemyAttackLands(e);
-                if(playerCharCurrentHealth < 1) console.log("Enemy wins!")
-                if(enemyCharCurrentHealth < 1) console.log("Player wins!")
+                if(playerCharCurrentHealth < 1) enemyWins();
+                if(enemyCharCurrentHealth < 1) playerWins();
 
-                if(aVariable<1) breakLoop = true;
                 if(playerCharCurrentHealth < 1 || enemyCharCurrentHealth < 1) breakLoop = true;
                 if(breakLoop) clearInterval(loopID);
             }, 1000);
 
 
         }
+    }
+
+    function enemyWins() {
+        const playerCharObj = document.getElementById('playerChar');
+        playerCharObj.classList.add("dead");
+    }
+
+    function playerWins() {
+        const enemyCharObj = document.getElementById('playerChar');
+        enemyCharObj.classList.add("dead");
     }
 
 
@@ -51,7 +59,6 @@ document.addEventListener('DOMContentLoaded',  () => {
             let damage = playerChar.AttackDamage * attackImpact;
             console.log("Hit for "+damage+" damage!");
             enemyCharCurrentHealth = enemyCharCurrentHealth - damage;
-            console.log(enemyCharCurrentHealth);
             playerAttackLands(e, damage);
         } else {
             playerAttackFails(e);
@@ -59,8 +66,15 @@ document.addEventListener('DOMContentLoaded',  () => {
     }
 
     function enemyAttacks(e) {
-        console.log("Ouch!");
-
+        if(flipACoin()) {
+            let attackImpact = calculateAttackEffectiveness();
+            let damage = enemyChar.AttackDamage * attackImpact;
+            console.log("Hit for "+damage+" damage!");
+            playerCharCurrentHealth = playerCharCurrentHealth - damage;
+            enemyAttackLands(e, damage);
+        } else {
+            enemyAttackFails(e);
+        }
     }
 
 
@@ -93,6 +107,32 @@ document.addEventListener('DOMContentLoaded',  () => {
             }, 100);
     }
 
+    function enemyAttackLands(e, damage) {
+        console.log("Ouch!")
+            const playerCharObj = document.getElementById('playerChar');
+            const enemyCharObj = document.getElementById('enemyChar');
+            enemyCharObj.classList.add("attackingR");
+            playerCharObj.classList.add("ouchie")
+            const enemyHealthbar = document.getElementById("leftHealthbar");
+            enemyHealthbar.style.width = ""+(100*(playerCharCurrentHealth/playerChar.Health))+"%";
+            setTimeout(() => {
+                playerCharObj.classList.remove("ouchie");
+                enemyCharObj.classList.remove("attackingR")
+            }, 100);
+    }
+
+    function enemyAttackFails(e) {
+        console.log("Dodge!")
+            const playerCharObj = document.getElementById('playerChar');
+            const enemyCharObj = document.getElementById('enemyChar');
+            enemyCharObj.classList.add("attackingR");
+            playerCharObj.classList.add("dodge")
+            setTimeout(() => {
+                enemyCharObj.classList.remove("attackingR");
+                playerCharObj.classList.remove("dodge")
+            }, 100);
+    }
+
 
     function flipACoin() {
         let raw = Math.random()
@@ -108,16 +148,26 @@ document.addEventListener('DOMContentLoaded',  () => {
 async function parseTheCharacters() {
     console.log("Hiiii")
     const response = await fetch(JSON_URL);
-        const data = await response.json();
-        const characterList = data.characters;
+    const data = await response.json();
 
-        let myCharacterName = "Harry Potter";
-        playerChar = characterList.find(chara => chara.Name === myCharacterName);
 
-        const randomIndex = Math.floor(Math.random() * characterList.length);
-        enemyChar = characterList[randomIndex];
 
-        console.log("You have chosen "+playerChar.Name+" with attack "+playerChar.Attack);
-        console.log("And you are fighting "+enemyChar.Name+" with attack "+enemyChar.Attack);
+    
+    const characterList = data.characters;
+
+    let myCharacterName = "Harry Potter";
+    playerChar = characterList.find(chara => chara.Name === myCharacterName);
+
+    const randomIndex = Math.floor(Math.random() * characterList.length);
+    enemyChar = characterList[randomIndex];
+
+    console.log("You have chosen "+playerChar.Name+" with attack "+playerChar.Attack);
+    console.log("And you are fighting "+enemyChar.Name+" with attack "+enemyChar.Attack);
+
+    const playerImage = document.querySelector('#playerChar img');
+    const enemyImage = document.querySelector('#enemyChar img');
+    playerImage.src = `/static/character_pictures/${playerChar.Name}.png`;
+    enemyImage.src = `/static/character_pictures/${enemyChar.Name}.png`;
+
 
 }
