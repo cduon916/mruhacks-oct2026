@@ -23,7 +23,7 @@ def scanner():
     else:
         return render_template('game.html', isbn_num = given_isbn)
 
-@app.route('/game', methods=['GET', 'POST','SHOW'])
+@app.route('/game', methods=['GET', 'POST', 'SHOW'])
 def game():
     if request.method == 'SHOW':
         character = get_char(isbn)
