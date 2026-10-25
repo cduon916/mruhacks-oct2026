@@ -18,16 +18,27 @@ def scanner():
         isbn_array = scan_image(image)
         if (len(isbn_array) > 0):
             given_isbn = isbn_array[0]
-    if (given_isbn != "No ISBN found"):
-        return render_template('scanner-page.html', isbn = given_isbn)
-    else:
-        return render_template('game.html?r_isbn=isbn_num', isbn_num = given_isbn)
 
-@app.route('/game', methods=['GET', 'POST', 'SHOW'])
+    if (str(given_isbn).isdigit()):
+        return redirect(url_for("game", isbn=given_isbn))
+    
+    if (request.method == 'GET'):
+        return render_template('scanner-page.html', isbn = given_isbn)
+    
+    #return render_template('scanner-page.html', isbn = "Invalid ISBN! Try again.")
+
+@app.route('/game', methods=['GET', 'POST'])
 def game():
-    if request.method == 'SHOW':
-        character = get_char(isbn)
-    return render_template('game.html')
+    isbn = request.args.get('isbn', '')
+
+    if (isbn.isdigit()):
+        character = get_char(int(isbn))
+        app.logger.info(character.name)
+
+    if request.method == 'GET':
+        return render_template('game.html', isbn=isbn)
+    
+    
 
 
 if __name__ == "__main__":

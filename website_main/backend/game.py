@@ -30,7 +30,7 @@ def get_char(isbn):
     char = isbn_database[isbn]
     chartraits = char_database[char]
     
-    return Character(char, char_database[char][0], char_database[char][1], char_database[char][2])
+    return Character(char, chartraits[0], chartraits[1], chartraits[2])
 
 
 # creates Character classes, one for computer, one for playable character

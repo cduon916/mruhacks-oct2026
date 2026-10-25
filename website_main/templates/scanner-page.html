@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=2.0">
-		<meta name="author" content="Taha, Evan, Celine">
+		<meta name="author" content="Taha, Evan, Celina">
 		<title>Scanner Page</title>
 		<link rel="stylesheet" href="static/style.css">
 		
@@ -23,7 +23,10 @@
 		        <input type="file" id="image" name="image" accept="image/*">
                 <button type="submit">Upload</button>
             </form>
-			<a href="{{ url_for('game') }}?g_isbn={{isbn}}">Play On</a>
+
+			{% if isbn and isbn != "Invalid ISBN! Try again." %}
+				<a href="{{ url_for('game') }}">Play On</a>
+			{% endif %}
 
 		</main>
 		<hr>
