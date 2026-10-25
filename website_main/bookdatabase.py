@@ -14,15 +14,6 @@ isbn_database = {
     9780141439730: ["Dr Jekyll"]            # Dr. Jekyll and Mr. Hyde
 }
 
-
-# key:value pairs of character:[health:int, attackname:str, attackdamage]
-char_database = {
-    "Sonic" = [100, "spin jump", 20]
-    9780439023511: ["Katniss Everdeen"],     # Hunger Games: Mockingjay
-    9780141439730: ["Hyde"],                 # The Strange Case of Dr Jekyll and Mr Hyde and Other Tales of Terror
-    9780241447383: ["Michelle Obama"]       # The Extraordinary Life of Michelle Obama
-}
-
 # key:value pairs of character:[health:int, attackname:str, attackdamage]
 char_database = {
     "Sonic": [100, "spin jump", 20],
