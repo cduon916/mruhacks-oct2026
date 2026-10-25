@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded',  () => {
             playerCharCurrentHealth = playerChar.Health;
             enemyCharCurrentHealth = playerChar.Health;
             let isYourTurn = flipACoin()
+            
+            if(playerCharCurrentHealth < 1 || enemyCharCurrentHealth < 1) return;
 
             //Primary Loop!
             let loopID = setInterval(() => {
@@ -43,11 +45,15 @@ document.addEventListener('DOMContentLoaded',  () => {
 
     function enemyWins() {
         const playerCharObj = document.getElementById('playerChar');
+        const enemyHealthbar = document.getElementById("leftHealthbar");
+        enemyHealthbar.hidden = true;
         playerCharObj.classList.add("dead");
     }
 
     function playerWins() {
         const enemyCharObj = document.getElementById('enemyChar');
+        const playerHealthbar = document.getElementById("rightHealthbar");
+        playerHealthbar.hidden = true;
         enemyCharObj.classList.add("dead");
     }
 

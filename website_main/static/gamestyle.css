@@ -90,5 +90,5 @@ img.site-logo {
 
 .dead {
     transform: rotate(90deg);
-    
+    filter:grayscale(100)
 }
