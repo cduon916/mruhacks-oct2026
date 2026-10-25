@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=2.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="author" content="Taha, Evan, Celine">
 		<title>Game Page</title>
 		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -21,11 +21,12 @@
 		<main>
 			
 			<p>{{ isbn }}</p>
+			<p>{{ char_name }}</p>
 			<h2>Now Fight!</h2>
 			<div class="battlefield">
 				<div class="wardisplay">
-					<img src="../backend/character_pictures/Harry Potter.png">
-					<img src="../backend/character_pictures/Harry Potter.png">
+					<img class="fighter-icon" src="{{ url_for('static',filename='character_pictures/harry_potter.png') }}">
+					<img class="fighter-icon" src="{{ url_for('static',filename='character_pictures/harry_potter.png') }}">
 				</div>
 				<ul id="battleLog">
 					<li class="item">

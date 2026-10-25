@@ -9,7 +9,7 @@ isbn_database = {
     9780140177398: "George and Lennie",    # Of Mice and Men
     9780439023511: "Katniss Everdeen",     # Hunger Games: Mockingjay
     9780143106357: "Big Joao",             # Jorge Amada
-    9780439023511: "Michelle Obama",       # Michelle Obama (Shocking!)
+    9780241447383: "Michelle Obama",       # Michelle Obama (Shocking!)
     9781551113531: "Ice Cube",             # War of the worlds
     9780141439730: "Hyde"                  # Dr. Jekyll and Mr. Hyde
 }

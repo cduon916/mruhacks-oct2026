@@ -37,14 +37,15 @@ def game():
 
     if (isbn.isdigit()):
         character = get_char(int(isbn))
-        app.logger.info(character.name)
+    else:
+        character = "Invalid"
 
     if request.method == 'GET':
         
-        return render_template('game.html', isbn=isbn)
+        return render_template('game.html', isbn=isbn, char_name=character.name)
     
     
 
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=8080, debug=True)
+    app.run(host="0.0.0.0", port=8080, debug=True)
