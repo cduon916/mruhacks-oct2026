@@ -5,7 +5,7 @@ isbn_database = {
     9789849608806: "Sonic",                # test
     9780140126709: "Old_Major",            # Animal Farm
     78073007998: "Harry_Potter",           # Harry Potter and the Prisoner of Azkaban
-    10999007997: "Bilbo_Baggins",          # The Hobbit
+    70999007991: "Bilbo_Baggins",          # The Hobbit
     9780140177398: "George_and_Lennie",    # Of Mice and Men
     9780439023511: "Katniss_Everdeen",     # Hunger Games: Mockingjay
     9780143106357: "Big_Joao",             # Jorge Amada
