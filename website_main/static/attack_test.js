@@ -156,9 +156,6 @@ async function parseTheCharacters() {
     const response = await fetch(JSON_URL);
     const data = await response.json();
 
-
-
-
     const characterList = data.characters;
 
     let myCharacterName = "Harry Potter";
@@ -174,8 +171,6 @@ async function parseTheCharacters() {
     const enemyImage = document.querySelector('#enemyChar img');
     playerImage.src = `/static/character_pictures/${playerChar.Name}.png`;
     enemyImage.src = `/static/character_pictures/${enemyChar.Name}.png`;
-
-
 }
 
 function logEvent(str, isPlayerAction) {
